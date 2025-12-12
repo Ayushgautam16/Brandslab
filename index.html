@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandslab - Turn Marketing Contracts Into Action</title>
+    <style>
+        /* FONT IMPORT */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #5b4cff;
+            --primary-hover: #4a3dee;
+            --secondary: #0f172a;
+            --text-gray: #64748b;
+            --light-bg: #f8fafc;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --header-height: 80px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Product Sans', 'Plus Jakarta Sans', sans-serif;
+            color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8f7ff 0%, #ffffff 100%);
+        }
+
+        /* UTILITIES */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5b4cff 0%, #6d4aff 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(91, 76, 255, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #4a3dee;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(91, 76, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid transparent;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(91, 76, 255, 0.05);
+            color: var(--primary);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            border: 1px solid white;
+        }
+        
+        .btn-white:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.03em;
+            margin-right: auto;
+            padding-left: 0; 
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin-right: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding-top: calc(var(--header-height) + 80px);
+            padding-bottom: 100px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, #f0f3ff 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+            color: #1a1a1a;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--text-gray);
+            max-width: 750px;
+            margin: 0 auto 3rem;
+        }
+
+        /* --- FEATURES --- */
+        .features { padding: 6rem 0; background: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .feature-card {
+            padding: 2rem; border-radius: 16px; border: 1px solid var(--border); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white; position: relative; top: 0;
+        }
+        .feature-card:hover {
+            border-color: rgba(91, 76, 255, 0.3); box-shadow: 0 20px 40px -10px rgba(91, 76, 255, 0.1); transform: translateY(-8px);
+        }
+        .feature-icon-box {
+            width: 54px; height: 54px; background: #eff6ff; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem; transition: transform 0.3s ease;
+        }
+        .feature-card:hover .feature-icon-box { transform: scale(1.1) rotate(5deg); background: var(--primary); color: white; }
+        .feature-title { font-weight: 700; margin-bottom: 0.75rem; font-size: 1.15rem; }
+        .feature-desc { font-size: 0.95rem; color: var(--text-gray); line-height: 1.6; }
+
+        /* --- DASHBOARD --- */
+        .dashboard-section { padding: 6rem 0; background: white; }
+        .dashboard-mockup {
+            background: white; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); overflow: hidden;
+            border: 1px solid var(--border); max-width: 1000px; margin: 0 auto;
+        }
+        .dash-header {
+            background: linear-gradient(135deg, #5b4cff 0%, #4f46e5 100%); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; align-items: center; color: white;
+        }
+        .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 2.5rem; border-bottom: 1px solid var(--border); background: white; }
+        .stat-item h4 { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 0.75rem; font-weight: 600; }
+        .stat-item .value { font-size: 2.5rem; font-weight: 800; color: var(--secondary); letter-spacing: -0.02em; }
+        .dash-list { padding: 2.5rem; }
+        .list-item { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; background: #f8fafc; border-radius: 12px; margin-bottom: 1rem; border: 1px solid transparent; transition: all 0.2s; }
+        .list-item:hover { background: white; border-color: #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .status-badge { padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
+        .status-completed { background: #dcfce7; color: #15803d; }
+        .status-pending { background: #fef3c7; color: #b45309; }
+
+        /* --- HOW IT WORKS (RESTORED TO BALANCED LOOK) --- */
+        .how-it-works { padding: 8rem 0; background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%); }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: #cbd5e1; z-index: 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Alternating layout */
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+
+        .timeline-content {
+            width: 45%; 
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-content { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        .timeline-marker {
+            width: 56px; height: 56px; background: var(--primary); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem;
+            box-shadow: 0 0 0 8px rgba(255,255,255,0.5); transition: transform 0.3s ease;
+            position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
+        }
+        
+        .timeline-item:hover .timeline-marker { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 0 8px #dbeafe; }
+        .timeline-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+        /* --- MAGIC LINK --- */
+        .magic-link { padding: 8rem 0; background: white; }
+        .magic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .magic-form { background: white; border-radius: 24px; box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.1); border: 1px solid var(--border); overflow: hidden; transform: rotate(-1deg); transition: transform 0.3s ease; }
+        .magic-form:hover { transform: rotate(0deg) scale(1.02); }
+        .upload-area { border: 2px dashed #cbd5e1; padding: 3rem; text-align: center; border-radius: 12px; color: #64748b; margin-bottom: 1.5rem; background: #f8fafc; }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials { padding: 8rem 0; background: #f8fafc; }
+        .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .test-card { padding: 3.5rem; border-radius: 24px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .test-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px rgba(0,0,0,0.05); }
+        .avatar { width: 56px; height: 56px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(91, 76, 255, 0.3); }
+
+        /* --- PRICING --- */
+        .pricing { padding: 8rem 0; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .price-card { padding: 3rem 2rem; border-radius: 24px; border: 1px solid var(--border); background: white; transition: all 0.3s ease; }
+        .price-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .price-card.popular { background: var(--primary); color: white; transform: scale(1.08); box-shadow: 0 25px 50px -12px rgba(91, 76, 255, 0.4); border: none; position: relative; z-index: 10; }
+        .price-card.popular:hover { transform: scale(1.1); }
+        .price { font-size: 3.5rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.03em; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section { padding: 8rem 0; background: #fff; position: relative; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; max-width: 1100px; margin: 0 auto; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
+        .contact-info { background: #f8fafc; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+        .contact-form-wrapper { padding: 3rem; }
+        .info-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+        .info-icon { width: 40px; height: 40px; background: #e0e7ff; color: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #334155; font-size: 0.9rem; }
+        .form-input { width: 100%; padding: 0.85rem; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 1rem; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(91, 76, 255, 0.1); }
+        textarea.form-input { resize: vertical; min-height: 120px; }
+
+        /* --- CTA --- */
+        .cta-section { background: linear-gradient(120deg, #4f46e5 0%, #7c3aed 100%); padding: 6rem 0; text-align: center; color: white; position: relative; overflow: hidden; }
+        
+        /* --- FOOTER --- */
+        footer { background: #0f172a; color: white; padding: 6rem 0 3rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 5rem; }
+        .footer-col a:hover { color: white; padding-left: 5px; }
+        .footer-col a { transition: all 0.2s; }
+
+        /* --- MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover { color: #0f172a; }
+
+        /* --- SUCCESS POPUP (TOAST) --- */
+        .toast-notification {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: #065f46;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .toast-notification.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .price-card.popular { transform: none; margin: 2rem 0; }
+            .magic-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column !important; align-items: flex-start; }
+            .timeline-item:nth-child(even) { flex-direction: column !important; }
+            .timeline-marker { position: static; transform: none; margin-bottom: 1rem; }
+            .timeline-content { width: 100%; margin: 0 !important; text-align: left !important; }
+            .timeline::before { left: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-actions { display: none; }
+            .test-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" style="height: 100%;">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">B</div>
+                    Brandslab
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-outline js-open-modal" data-type="demo" style="font-size: 0.9rem;">Book Demo</a>
+                    <a href="#" class="btn btn-primary js-open-modal" data-type="trial" style="font-size: 0.9rem;">Start Free Trial</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge" style="background: #e0e7ff; color: var(--primary); margin-bottom: 1.5rem; box-shadow: 0 0 0 4px #f0f4ff;">
+                The OS for Marketing Execution
+            </div>
+            <h1>Turn Marketing Contracts<br>Into Action.</h1>
+            <p>Upload contracts → auto-extract deliverables & payment terms → track execution → ensure compliance → approve payments.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#" class="btn btn-primary js-open-modal" data-type="trial" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Start Free Trial</a>
+                <a href="#" class="btn btn-outline js-open-modal" data-type="demo" style="padding: 1rem 2.5rem; font-size: 1.1rem; border: 1px solid #cbd5e1;">Book Demo</a>
+            </div>
+            <div style="margin-top: 3.5rem; color: #64748b; font-size: 0.9rem; font-weight: 500; display: flex; gap: 2rem; justify-content: center; opacity: 0.8;">
+                <span>✨ No credit card required</span>
+                <span>🚀 14-day free trial</span>
+                <span>⚡ Setup in 5 minutes</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need to execute flawlessly</h2>
+            <p class="section-subtitle">Complete toolkit for marketing contract management and execution</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-box">✨</div>
+                    <h3 class="feature-title">AI Contract Extraction</h3>
+                    <p class="feature-desc">Automatically parse contracts to extract deliverables, dates, and terms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">📋</div>
+                    <h3 class="feature-title">Deliverables → Task</h3>
+                    <p class="feature-desc">Convert contract deliverables into trackable tasks with automated workflows.</p>
+                </div>
+                <div class="feature-card" style="border-color: #c7d2fe; background: #fdfcff;">
+                    <div class="feature-icon-box" style="background: #e0e7ff; color: #5b4cff;">🔗</div>
+                    <h3 class="feature-title">Magic Link Collaboration</h3>
+                    <div class="badge" style="background: #fef3c7; color: #d97706; font-size: 0.6rem; margin-left: 5px; vertical-align: middle;">FEATURED</div>
+                    <p class="feature-desc">Share secure links with agencies for frictionless submissions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">🔔</div>
+                    <h3 class="feature-title">Deadline Alerts</h3>
+                    <p class="feature-desc">Automated notifications for upcoming deadlines and compliance needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">💳</div>
+                    <h3 class="feature-title">Payment Milestone Control</h3>
+                    <p class="feature-desc">Approve payments only when deliverables are completed and verified.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">📁</div>
+                    <h3 class="feature-title">Proof & File Submissions</h3>
+                    <p class="feature-desc">Centralized hub for agencies to upload proofs and documentation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">📊</div>
+                    <h3 class="feature-title">Performance Tracking</h3>
+                    <p class="feature-desc">Track campaign performance metrics and KPIs in one unified dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-box">📂</div>
+                    <h3 class="feature-title">Contract Repository</h3>
+                    <p class="feature-desc">Store all contracts securely with automatic renewal reminders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <h2 class="section-title">Everything at a glance</h2>
+            <p class="section-subtitle">Unified dashboard showing tasks, deliverables, approvals, and payments</p>
+            <div class="dashboard-mockup">
+                <div class="dash-header">
+                    <div style="font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.4rem;">📊</span> Campaign Dashboard
+                    </div>
+                    <div style="font-size: 0.85rem; opacity: 0.9; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px;">Last updated: 2 mins ago</div>
+                </div>
+                <div class="dash-stats">
+                    <div class="stat-item"><h4>🕒 Pending Tasks</h4><div class="value">12</div></div>
+                    <div class="stat-item"><h4>✅ Completed</h4><div class="value">28</div></div>
+                    <div class="stat-item"><h4>⚠️ Overdue</h4><div class="value">3</div></div>
+                    <div class="stat-item"><h4 style="color: var(--primary);">💲 Pending Approval</h4><div class="value" style="color: var(--primary);">₹2.4L</div></div>
+                </div>
+                <div class="dash-list">
+                    <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; color: #334155;">Recent Deliverables</h4>
+                    <div class="list-item">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></div>
+                            <div><div style="font-weight: 600; color: #1e293b;">Social Media Creative Set - Q1</div><div style="color: #64748b; font-size: 0.85rem;">Creative Studios</div></div>
+                        </div>
+                        <span class="status-badge status-completed">COMPLETED</span>
+                    </div>
+                    <div class="list-item">
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div style="width: 10px; height: 10px; background: #f59e0b; border-radius: 50%;"></div>
+                            <div><div style="font-weight: 600; color: #1e293b;">Blog Post Series (5 articles)</div><div style="color: #64748b; font-size: 0.85rem;">Content Labs</div></div>
+                        </div>
+                        <span class="status-badge status-pending">PENDING</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Brandslab fixes execution at the root.</h2>
+            <p class="section-subtitle">From contract to compliance in simple steps</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">📄</div>
+                        <h3 style="margin-bottom: 0.75rem; font-weight: 700;">Upload Contract</h3>
+                        <p style="color: var(--text-gray);">Simply upload your marketing contract or agreement in PDF, Word, or any format.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">✨</div>
+                        <h3 style="margin-bottom: 0.75rem; font-weight: 700;">AI Extracts Everything</h3>
+                        <p style="color: var(--text-gray);">Our AI automatically identifies deliverables, milestones, deadlines & payment terms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">✅</div>
+                        <h3 style="margin-bottom: 0.75rem; font-weight: 700;">Track & Approve</h3>
+                        <p style="color: var(--text-gray);">Monitor task execution, agency submissions, and approve payments based on deliverables.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🔗</div>
+                        <h3 style="margin-bottom: 0.75rem; font-weight: 700;">Agencies Submit via Magic Link</h3>
+                        <p style="color: var(--text-gray);">Share secure links with agencies for frictionless deliverable submissions.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">👍</div>
+                        <h3 style="margin-bottom: 0.75rem; font-weight: 700;">Approve Payments</h3>
+                        <p style="color: var(--text-gray);">Release payments with confidence knowing work is completed and verified.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="magic-link">
+        <div class="container">
+            <div class="magic-grid">
+                <div>
+                    <div class="badge" style="background: #e0e7ff; color: var(--primary); margin-bottom: 1.5rem;">⭐ FEATURED</div>
+                    <h2 style="font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: #0f172a;">No logins.<br>No friction.</h2>
+                    <h3 style="font-size: 1.5rem; color: #475569; margin-bottom: 2rem; font-weight: 500;">Agencies submit with one secure link.</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.7;">
+                        Share a unique Magic Link with your agency partners. They can upload deliverables, submit proofs, and respond to feedback—all without creating an account.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary);">📤</span> Upload proofs instantly</div>
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 12px; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary);">📄</span> Submit deliverables</div>
+                    </div>
+                </div>
+                <div class="magic-form">
+                    <div style="background: #5b4cff; color: white; padding: 1.25rem 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
+                        <span>🔗</span> Magic Link Submission
+                    </div>
+                    <div style="padding: 2.5rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem; font-weight: 500;">Agency Name</label>
+                            <input type="text" value="Creative Studios Inc." readonly style="width: 100%; padding: 0.85rem; background: #f1f5f9; border: none; border-radius: 8px; color: #475569; font-weight: 500;">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem; font-weight: 500;">Upload Files</label>
+                            <div class="upload-area">
+                                <div style="font-size: 2rem; margin-bottom: 0.75rem;">☁️</div>
+                                <div style="font-weight: 600;">Drag & drop or click to upload</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Submit Deliverable</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Loved by teams and agencies</h2>
+            <p class="section-subtitle">See what our customers say about Brandslab</p>
+            <div class="test-grid">
+                <div class="test-card">
+                    <div style="color: #fbbf24; margin-bottom: 1.5rem; font-size: 1.25rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 1.15rem; font-style: italic; color: #475569; margin-bottom: 2rem; line-height: 1.7;">"Brandslab transformed how we manage agency relationships. What used to take hours of manual tracking now happens automatically. The Magic Link feature alone saved us 10+ hours per week."</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="avatar">PS</div>
+                        <div><div style="font-weight: 700; color: #1e293b;">Priya Sharma</div><div style="color: #64748b; font-size: 0.9rem;">Marketing Manager, TechVentures</div></div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div style="color: #fbbf24; margin-bottom: 1.5rem; font-size: 1.25rem;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 1.15rem; font-style: italic; color: #475569; margin-bottom: 2rem; line-height: 1.7;">"As an agency, we love the Magic Link submissions. No more chasing clients for access or dealing with complex portals. We submit, they approve, we get paid faster. Win-win."</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="avatar" style="background: #8b5cf6;">RM</div>
+                        <div><div style="font-weight: 700; color: #1e293b;">Rahul Mehta</div><div style="color: #64748b; font-size: 0.9rem;">Director, Creative Studios Mumbai</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, transparent pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your team. All plans include a 14-day free trial.</p>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Starter</h3>
+                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 2rem;">Perfect for small teams getting started</p>
+                    <div class="price">₹2,999 <span style="font-size: 1rem; font-weight: 500; color: #64748b;">/mo</span></div>
+                    <button class="btn btn-primary js-open-modal" data-type="trial" style="width: 100%; margin-bottom: 2rem; background: #e0e7ff; color: var(--primary); box-shadow: none;">Start Free Trial</button>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> Up to 5 active contracts</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> AI Contract Extraction</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> 2 Team Members</li>
+                    </ul>
+                </div>
+                <div class="price-card popular">
+                    <div class="badge" style="background: white; color: var(--primary); margin-bottom: 1rem;">MOST POPULAR</div>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem;">Growth</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 2rem;">For growing teams managing multiple campaigns</p>
+                    <div class="price">₹7,999 <span style="font-size: 1rem; font-weight: 500; opacity: 0.8;">/mo</span></div>
+                    <button class="btn btn-white js-open-modal" data-type="trial" style="width: 100%; margin-bottom: 2rem; color: var(--primary); font-weight: 700;">Start Free Trial</button>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: white; font-weight: bold;">✓</span> Up to 25 active contracts</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: white; font-weight: bold;">✓</span> Advanced AI Extraction</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: white; font-weight: bold;">✓</span> Payment Milestone Control</li>
+                    </ul>
+                </div>
+                <div class="price-card">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Pro</h3>
+                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 2rem;">Enterprise-grade for large organizations</p>
+                    <div class="price">₹19,999 <span style="font-size: 1rem; font-weight: 500; color: #64748b;">/mo</span></div>
+                    <button class="btn btn-primary js-open-modal" data-type="trial" style="width: 100%; margin-bottom: 2rem; background: #e0e7ff; color: var(--primary); box-shadow: none;">Start Free Trial</button>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> Unlimited contracts</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> Custom Compliance Rules</li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;"><span style="color: var(--primary); font-weight: bold;">✓</span> Dedicated Account Manager</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in touch</h2>
+            <p class="section-subtitle">Have questions about Brandslab? Our team is here to help you.</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div><h4 style="font-weight: 700; margin-bottom: 0.5rem;">Headquarters</h4><p style="color: #64748b;">123 Startup Hub, 4th Floor<br>Bangalore, Karnataka, India 560001</p></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div><h4 style="font-weight: 700; margin-bottom: 0.5rem;">Email Us</h4><p style="color: #64748b;">sahiljadhav0048@gmail.com</p></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div><h4 style="font-weight: 700; margin-bottom: 0.5rem;">Call Us</h4><p style="color: #64748b;">+91 98765 43210<br>Mon-Fri, 9am to 6pm IST</p></div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" action="https://formsubmit.co/sahiljadhav0048@gmail.com" method="POST">
+                        <div class="form-group"><label class="form-label">Full Name</label><input type="text" name="name" class="form-input" placeholder="Enter your name" required></div>
+                        <div class="form-group"><label class="form-label">Email Address</label><input type="email" name="email" class="form-input" placeholder="name@company.com" required></div>
+                        <div class="form-group"><label class="form-label">Message</label><textarea name="message" class="form-input" placeholder="How can we help you?" required></textarea></div>
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission">
+                        <input type="hidden" name="_next" value=""> 
+                        <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 8px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="cta-content">
+                <h2 style="font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800;">Ready to eliminate marketing<br>chaos?</h2>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; margin-top: 2rem;">
+                    <a href="#" class="btn btn-white js-open-modal" data-type="demo">📅 Book Demo</a>
+                    <a href="#" class="btn btn-outline js-open-modal" data-type="trial" style="border: 1px solid white; color: white;">Start Free Trial →</a>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    <span>✓ 14-day free trial</span>
+                    <span>✓ No credit card required</span>
+                    <span>✓ Setup in 5 minutes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo" style="color: white; font-size: 1.5rem; padding-left: 0;">
+                        <div class="logo-icon">B</div> Brandslab
+                    </a>
+                    <p style="margin-top: 1rem; color: #94a3b8; max-width: 300px; line-height: 1.6;">Turn Marketing Contracts Into Action.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Product</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">Features</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Company</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">About Us</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: white; font-weight: 700;">Legal</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #94a3b8; text-decoration: none;">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #1e293b; padding-top: 2rem; text-align: center; color: #475569; font-size: 0.9rem;">
+                © 2025 Brandslab. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="demo-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h2 id="modal-title" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: #0f172a;">Book Your Demo</h2>
+            <p style="color: #64748b; margin-bottom: 2rem;">See how Brandslab can streamline your marketing operations.</p>
+            
+            <form id="modal-form" action="https://formsubmit.co/sahiljadhav0048@gmail.com" method="POST">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Work Email</label>
+                    <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+                </div>
+                <input type="hidden" name="_subject" id="modal-subject" value="New Demo Booking Request">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <button type="submit" id="modal-submit-btn" class="btn btn-primary" style="width: 100%;">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-notification" id="toast">
+        <span style="font-size: 1.2rem;">✅</span> Message has been sent successfully!
+    </div>
+
+    <script>
+        // --- MODAL LOGIC ---
+        const modal = document.getElementById('demo-modal');
+        const openBtns = document.querySelectorAll('.js-open-modal');
+        const closeBtn = document.getElementById('modal-close');
+        const toast = document.getElementById('toast');
+        
+        // Modal Elements to update dynamically
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubject = document.getElementById('modal-subject');
+        const modalSubmitBtn = document.getElementById('modal-submit-btn');
+
+        // Open Modal with correct context
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const type = btn.getAttribute('data-type');
+                
+                if (type === 'trial') {
+                    modalTitle.textContent = "Start Free Trial";
+                    modalSubject.value = "New Free Trial Request";
+                    modalSubmitBtn.textContent = "Start Trial";
+                } else {
+                    modalTitle.textContent = "Book Your Demo"; // Default
+                    modalSubject.value = "New Demo Booking Request";
+                    modalSubmitBtn.textContent = "Book Now";
+                }
+                
+                modal.classList.add('active');
+            });
+        });
+
+        // Close Modal
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close on Overlay Click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // --- FORM SUBMISSION AJAX LOGIC ---
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Stop default redirect
+            
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            
+            // Change button text to indicate loading
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+
+            // Gather Data
+            const formData = new FormData(form);
+
+            // Fetch Request
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success handling
+                    form.reset(); // Clear form
+                    modal.classList.remove('active'); // Close modal if open
+                    
+                    // Show Toast
+                    toast.classList.add('active');
+                    setTimeout(() => {
+                        toast.classList.remove('active');
+                    }, 4000);
+                } else {
+                    alert("Oops! There was a problem sending your message.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Oops! Something went wrong.");
+            })
+            .finally(() => {
+                // Reset button
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Attach listener to Contact Form
+        document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+
+        // Attach listener to Modal Form
+        document.getElementById('modal-form').addEventListener('submit', handleFormSubmit);
+
+    </script>
+</body>
+</html>
